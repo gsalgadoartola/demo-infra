@@ -60,7 +60,5 @@ spec:
         terminationMessagePath: /dev/termination-log
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-      securityContext:
-        capabilities: {}
-        privileged: false
+      securityContext: {}
       terminationGracePeriodSeconds: 30
