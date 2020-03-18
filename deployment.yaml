@@ -25,7 +25,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: quay.io/gsalgadoartola/demo-app:1.0.2
+      - image: quay.io/gsalgadoartola/demo-app:1.0.3
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
