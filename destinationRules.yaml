@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: demo-ruby
+  namespace: lowrider
+spec:
+  host: demo-ruby.lowrider.svc.cluster.local
+  subsets:
+  - labels:
+      app: demo-ruby
+    name: v1

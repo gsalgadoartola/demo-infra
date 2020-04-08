@@ -2,14 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: demo-app
+    app: demo-ruby
     version: v1
-  name: demo-app
+  name: demo-ruby
+  namespace: lowrider
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo-app
+      app: demo-ruby
       version: v1
   strategy:
     rollingUpdate:
@@ -21,35 +22,34 @@ spec:
       annotations:
         sidecar.istio.io/inject: 'true'
       labels:
-        app: demo-app
+        app: demo-ruby
         version: v1
     spec:
       containers:
-      - image: quay.io/gsalgadoartola/demo-app:1.0.3
+      - env:
+        - name: SECRET_KEY_BASE
+          value: development_test_key
+        - name: DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              key: database-name
+              name: postgresql
+        - name: DATABASE_USER
+          value: postgres
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: database-admin-password
+              name: postgresql
+        - name: DATABASE_URL
+          value: postgresql://postgresql.lowrider.svc:5432
+        image: quay.io/gsalgadoartola/demo-ruby:1.0.rc-9
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          httpGet:
-            path: "/healthz"
-            port: 8080
-          initialDelaySeconds: 10
-          timeoutSeconds: 1
-          failureThreshold: 3
-          periodSeconds: 10
-          successThreshold: 1
-        name: demo-app
+        name: demo-ruby
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
           name: http-api
           protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: "/healthz"
-            port: 8080
-          initialDelaySeconds: 5
-          timeoutSeconds: 1
-          failureThreshold: 3
-          periodSeconds: 10
-          successThreshold: 1
         resources:
           limits:
             cpu: 150m
