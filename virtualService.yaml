@@ -9,7 +9,7 @@ spec:
   gateways:
   - istio-system/ingressgateway 
   hosts:
-  - demo-ruby.apps.k8s.xmartlabs.com
+  - lowrider.apps.k8s.xmartlabs.com
   http:
   - match:
     - uri:
