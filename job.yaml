@@ -1,0 +1,18 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: demo-ruby-db-migrate
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: demo-ruby-db-migrate
+        image: quay.io/gsalgadoartola/demo-ruby:1.0.rc-14 
+        command:
+          - "bundle exec rails db:migrate"
+      restartPolicy: Never
+  backoffLimit: 2
