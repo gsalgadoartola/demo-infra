@@ -32,6 +32,6 @@ spec:
         command:
           - "/bin/bash"
           - "-c"
-          - "bundle exec rails db:migrate"
+          - "bundle exec rails db:drop && bundle exec rails db:create && bundle exec rails db:migrate"
       restartPolicy: Never
   backoffLimit: 2
