@@ -13,6 +13,8 @@ spec:
       - name: demo-ruby-db-migrate
         image: quay.io/gsalgadoartola/demo-ruby:1.0.rc-14 
         command:
+          - "/bin/bash"
+          - "-c"
           - "bundle exec rails db:migrate"
       restartPolicy: Never
   backoffLimit: 2
