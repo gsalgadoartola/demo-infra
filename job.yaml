@@ -10,7 +10,24 @@ spec:
   template:
     spec:
       containers:
-      - name: demo-ruby-db-migrate
+      - env:
+        - name: SECRET_KEY_BASE
+          value: development_test_key
+        - name: DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              key: database-name
+              name: postgresql
+        - name: DATABASE_USER
+          value: postgres
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: database-admin-password
+              name: postgresql
+        - name: DATABASE_URL
+          value: postgresql://postgresql.lowrider.svc:5432
+        name: demo-ruby-db-migrate
         image: quay.io/gsalgadoartola/demo-ruby:1.0.rc-14 
         command:
           - "/bin/bash"
