@@ -27,6 +27,8 @@ spec:
               name: postgresql
         - name: DATABASE_URL
           value: postgresql://postgresql.lowrider.svc:5432
+        - name: DISABLE_DATABASE_ENVIRONMENT_CHECK
+          value: 1
         name: demo-ruby-db-migrate
         image: quay.io/gsalgadoartola/demo-ruby:1.0.rc-14 
         command:
