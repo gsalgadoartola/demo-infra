@@ -33,7 +33,7 @@ spec:
         - name: DISABLE_DATABASE_ENVIRONMENT_CHECK
           value: "1"
         name: demo-ruby-db-migrate
-        image: quay.io/gsalgadoartola/demo-ruby:1.0.rc-16
+        image: quay.io/xmartlabs/demo-ruby:1.0.rc-16
         command:
           - "/bin/bash"
           - "-c"
