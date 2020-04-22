@@ -45,7 +45,7 @@ spec:
           value: postgresql://postgresql.lowrider.svc:5432
         - name: DEVISE_SECRET_KEY
           value: "26c581c7b303b021c6139ca0bc2134dd78a1047d0c73e8458c44fa0e3e4e2f9b15ccda8f5a0b556c18836f98eced3fef7b35833c5f1ae1452cb71bbb08bcbf1f"
-        image: quay.io/xmartlabs/demo-ruby:1.0.rc-23
+        image: quay.io/xmartlabs/demo-ruby:1.0.rc-24
         imagePullPolicy: IfNotPresent
         name: demo-ruby
         ports:
