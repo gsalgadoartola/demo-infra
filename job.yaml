@@ -35,7 +35,7 @@ spec:
         - name: DEVISE_SECRET_KEY
           value: "26c581c7b303b021c6139ca0bc2134dd78a1047d0c73e8458c44fa0e3e4e2f9b15ccda8f5a0b556c18836f98eced3fef7b35833c5f1ae1452cb71bbb08bcbf1f"
         name: demo-ruby-db-migrate
-        image: quay.io/xmartlabs/demo-ruby:1.0.rc-26
+        image: quay.io/xmartlabs/demo-ruby:1.0.rc-27
         command:
           - "/bin/bash"
           - "-c"
